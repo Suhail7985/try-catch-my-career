@@ -24,20 +24,57 @@ export default function Contact() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    if (!formData.name || !formData.email || !formData.message) {
-      toast.error('Please fill in all required fields.')
+    
+    // Client-side validation
+    if (!formData.name?.trim()) {
+      toast.error('Please enter your name.')
       return
     }
+    if (formData.name.length < 2 || formData.name.length > 100) {
+      toast.error('Name must be between 2 and 100 characters.')
+      return
+    }
+    
+    if (!formData.email?.trim()) {
+      toast.error('Please enter your email address.')
+      return
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!emailRegex.test(formData.email)) {
+      toast.error('Please enter a valid email address.')
+      return
+    }
+    
+    if (!formData.message?.trim()) {
+      toast.error('Please enter your message.')
+      return
+    }
+    if (formData.message.length < 5) {
+      toast.error('Message must be at least 5 characters long.')
+      return
+    }
+    if (formData.message.length > 5000) {
+      toast.error('Message must not exceed 5000 characters.')
+      return
+    }
+    
+    if (formData.subject && formData.subject.length > 200) {
+      toast.error('Subject must not exceed 200 characters.')
+      return
+    }
+    
     setStatus('loading')
     try {
       await sendContactMessage(formData)
       setStatus('success')
       setFormData({ name: '', email: '', subject: '', message: '' })
-      toast.success('Message sent successfully!')
+      toast.success('Message sent successfully! I will get back to you soon.')
       setTimeout(() => setStatus('idle'), 3000)
-    } catch {
+    } catch (error) {
       setStatus('error')
-      toast.error('Failed to send. Please try again.')
+      const errorMessage = error.response?.data?.message || 
+                          'Failed to send message. Please try again later.'
+      toast.error(errorMessage)
       setTimeout(() => setStatus('idle'), 3000)
     }
   }

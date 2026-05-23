@@ -35,7 +35,7 @@ export default function Education() {
             delay={i * 0.1}
             stretch
           >
-            <GlassCard className="relative overflow-hidden group">
+            <GlassCard className="relative overflow-hidden group flex flex-col">
               <div className="absolute top-0 right-0 p-4 sm:p-6 opacity-10 group-hover:opacity-20 transition-opacity pointer-events-none">
                 <GraduationCap size={64} style={{ color: item.color }} />
               </div>
@@ -44,8 +44,8 @@ export default function Education() {
                 title={item.degree}
                 subtitle={item.field}
               />
-              <CardBody className="relative z-10">
-                <div className="flex items-center justify-between flex-wrap gap-2">
+              <div className="relative z-10 mb-4 sm:mb-5">
+                <div className="flex items-center justify-between flex-wrap gap-2 mb-3 sm:mb-4">
                   <span className="text-slate-300 text-xs sm:text-sm font-medium text-left">
                     {item.institution}
                   </span>
@@ -53,8 +53,8 @@ export default function Education() {
                     {item.duration}
                   </span>
                 </div>
-                <div>
-                  <p className="text-slate-500 text-[10px] sm:text-xs uppercase tracking-widest mb-2 flex items-center gap-1.5">
+                <div className="flex-1">
+                  <p className="text-slate-500 text-[10px] sm:text-xs uppercase tracking-widest mb-3 flex items-center gap-1.5">
                     <BookOpen size={11} /> Key Coursework
                   </p>
                   <div className="flex flex-wrap gap-1.5">
@@ -68,7 +68,7 @@ export default function Education() {
                     ))}
                   </div>
                 </div>
-              </CardBody>
+              </div>
             </GlassCard>
           </ScrollReveal>
         ))}

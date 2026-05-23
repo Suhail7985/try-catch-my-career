@@ -60,20 +60,20 @@ function ProjectCard({ project, index }) {
         )}
       </div>
 
-      <div className="p-4 sm:p-5 flex flex-col flex-1">
-        <h3 className="text-theme font-bold text-base sm:text-lg mb-2">{project.title}</h3>
-        <p className="text-slate-400 text-xs sm:text-sm leading-relaxed mb-4 flex-1">{project.description}</p>
+      <div className="p-4 sm:p-5 flex flex-col flex-1 h-full">
+        <h3 className="text-theme font-bold text-base sm:text-lg mb-2 sm:mb-3 text-left">{project.title}</h3>
+        <p className="text-slate-400 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-5 text-left">{project.description}</p>
 
-        <ul className="space-y-1 mb-4">
+        <ul className="space-y-2 mb-4 sm:mb-5">
           {project.features.slice(0, 3).map((f) => (
-            <li key={f} className="flex items-start gap-2 text-xs text-slate-500">
+            <li key={f} className="flex items-start gap-2 text-xs text-slate-500 text-left">
               <span className="w-1.5 h-1.5 rounded-full shrink-0 mt-1" style={{ background: '#7c3aed' }} />
-              {f}
+              <span>{f}</span>
             </li>
           ))}
         </ul>
 
-        <div className="flex flex-wrap gap-1.5 mb-4">
+        <div className="flex flex-wrap gap-1.5 mb-4 sm:mb-5 flex-1">
           {project.tech.map((t) => (
             <span
               key={t}

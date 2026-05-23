@@ -26,33 +26,31 @@ export default function Services() {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 grid-stretch">
         {services.map((service, i) => (
           <ScrollReveal key={service.id} animation="fade-up" delay={i * 0.08} stretch>
-            <GlassCard className="group relative overflow-hidden">
+            <GlassCard className="group relative overflow-hidden flex flex-col">
               <div
                 className="absolute -bottom-8 -right-8 w-28 h-28 blur-3xl opacity-10 group-hover:opacity-20 transition-opacity duration-500 pointer-events-none"
                 style={{ background: service.color }}
               />
-              <div className="relative z-10 shrink-0 text-3xl sm:text-4xl mb-4 w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl glass flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+              <div className="relative z-10 shrink-0 text-3xl sm:text-4xl mb-4 sm:mb-5 w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl glass flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
                 {service.icon}
               </div>
-              <h3 className="relative z-10 text-base sm:text-xl font-bold text-theme mb-2 group-hover:text-purple-400 transition-colors text-left shrink-0">
+              <h3 className="relative z-10 text-base sm:text-lg font-bold text-theme mb-2 sm:mb-3 group-hover:text-purple-400 transition-colors text-left">
                 {service.title}
               </h3>
-              <CardBody className="gap-4 relative z-10">
-              <p className="text-slate-400 text-xs sm:text-sm leading-relaxed text-left">
+              <p className="text-slate-400 text-xs sm:text-sm leading-relaxed text-left mb-4 sm:mb-5 relative z-10">
                 {service.description}
               </p>
-              <ul className="space-y-2 sm:space-y-2.5 mt-auto">
+              <ul className="space-y-2 sm:space-y-2.5 mt-auto relative z-10">
                 {service.features.map((feature) => (
-                  <li key={feature} className="flex items-center gap-2.5 text-xs text-slate-300 text-left">
+                  <li key={feature} className="flex items-start gap-2.5 text-xs text-slate-300 text-left">
                     <div
-                      className="w-1.5 h-1.5 rounded-full shrink-0"
+                      className="w-1.5 h-1.5 rounded-full shrink-0 mt-1"
                       style={{ background: service.color }}
                     />
-                    {feature}
+                    <span>{feature}</span>
                   </li>
                 ))}
               </ul>
-              </CardBody>
             </GlassCard>
           </ScrollReveal>
         ))}

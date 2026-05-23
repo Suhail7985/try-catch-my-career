@@ -29,51 +29,47 @@ export default function Courses() {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 grid-stretch">
         {courses.map((course, i) => (
           <ScrollReveal key={course.id} animation="fade-up" delay={i * 0.08} stretch>
-            <GlassCard className="group relative overflow-hidden">
+            <GlassCard className="group relative overflow-hidden flex flex-col">
               <div
                 className="absolute -bottom-8 -right-8 w-28 h-28 blur-3xl opacity-10 group-hover:opacity-20 transition-opacity duration-500 pointer-events-none"
                 style={{ background: course.color }}
               />
-              <div className="relative z-10 shrink-0 flex items-start justify-between mb-4 sm:mb-5 gap-3">
+              <div className="relative z-10 flex items-start justify-between mb-4 sm:mb-5 gap-3">
                 <div
                   className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-500"
                   style={{ background: `${course.color}22`, border: `1px solid ${course.color}44` }}
                 >
                   <Award size={24} style={{ color: course.color }} />
                 </div>
-                <span className="text-[10px] font-mono px-2 py-1 rounded-md bg-white/5 text-slate-400 border border-white/5 flex items-center gap-1.5 shrink-0">
+                <span className="text-[10px] font-mono px-2 py-1 rounded-md bg-white/5 text-slate-400 border border-white/5 flex items-center gap-1.5 shrink-0 whitespace-nowrap">
                   <Calendar size={10} /> {course.date}
                 </span>
               </div>
-              <div className="relative z-10 shrink-0">
-              <h3 className="text-base sm:text-lg font-bold text-theme mb-2 group-hover:text-purple-400 transition-colors leading-snug text-left">
+              <h3 className="text-base sm:text-lg font-bold text-theme mb-2 sm:mb-3 group-hover:text-purple-400 transition-colors leading-snug text-left relative z-10">
                 {course.title}
               </h3>
-              <p className="text-slate-400 text-xs sm:text-sm font-medium mb-1 text-left">
+              <p className="text-slate-400 text-xs sm:text-sm font-medium mb-1 text-left relative z-10">
                 {course.institution}
               </p>
-              <p className="text-slate-500 text-[10px] uppercase tracking-wider text-left">
+              <p className="text-slate-500 text-[10px] uppercase tracking-wider text-left mb-4 sm:mb-5 relative z-10">
                 Platform: {course.platform}
               </p>
-              </div>
-              <CardBody className="gap-3 relative z-10">
-                <div>
-                  <p className="text-slate-500 text-[10px] uppercase tracking-widest mb-3 flex items-center gap-1.5">
-                    <BookOpen size={11} /> Skills Covered
-                  </p>
-                  <div className="flex flex-wrap gap-1.5">
-                    {course.categories.map((cat) => (
-                      <span
-                        key={cat}
-                        className="text-[10px] px-2 py-0.5 rounded-md bg-white/5 text-slate-300 border border-white/5"
-                      >
-                        {cat}
-                      </span>
-                    ))}
-                  </div>
+              <div className="mb-4 sm:mb-5 relative z-10 flex-1">
+                <p className="text-slate-500 text-[10px] uppercase tracking-widest mb-3 flex items-center gap-1.5">
+                  <BookOpen size={11} /> Skills Covered
+                </p>
+                <div className="flex flex-wrap gap-1.5">
+                  {course.categories.map((cat) => (
+                    <span
+                      key={cat}
+                      className="text-[10px] px-2 py-0.5 rounded-md bg-white/5 text-slate-300 border border-white/5"
+                    >
+                      {cat}
+                    </span>
+                  ))}
                 </div>
-              </CardBody>
-              <div className="relative z-10 mt-auto pt-4 sm:pt-5 border-t border-white/5 shrink-0">
+              </div>
+              <div className="relative z-10 pt-4 sm:pt-5 border-t border-white/5 shrink-0 mt-auto">
                 <a
                   href={course.credentialUrl || '#'}
                   target="_blank"
