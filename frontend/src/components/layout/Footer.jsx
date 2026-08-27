@@ -29,7 +29,7 @@ export default function Footer() {
   return (
     <footer className="relative mt-0 border-t border-white/5">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-48 h-px"
-        style={{ background: 'linear-gradient(90deg, transparent, #7c3aed, #06b6d4, transparent)' }}
+        style={{ background: 'linear-gradient(90deg, transparent, #9333ea, #f472b6, transparent)' }}
       />
 
       <div className="container-custom py-10 sm:py-14">
@@ -39,7 +39,7 @@ export default function Footer() {
           <div className="sm:col-span-2 lg:col-span-1 text-center sm:text-left">
             <div className="flex items-center gap-2 mb-4 justify-center sm:justify-start">
               <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl flex items-center justify-center"
-                style={{ background: 'linear-gradient(135deg, #7c3aed, #06b6d4)' }}>
+                style={{ background: 'linear-gradient(135deg, #9333ea, #f472b6)' }}>
                 <Code2 size={16} className="text-white" />
               </div>
               <span className="text-base sm:text-lg font-bold font-mono gradient-text-2">&lt;Suhail /&gt;</span>
@@ -122,7 +122,7 @@ export default function Footer() {
             whileHover={{ scale: 1.1, y: -2 }}
             whileTap={{ scale: 0.9 }}
             className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-white transition-colors justify-self-center sm:justify-self-end"
-            style={{ background: 'linear-gradient(135deg, rgba(124,58,237,0.2), rgba(6,182,212,0.2))', border: '1px solid rgba(124,58,237,0.3)' }}
+            style={{ background: 'linear-gradient(135deg, rgba(147,51,234,0.2), rgba(244,114,182,0.2))', border: '1px solid rgba(147,51,234,0.3)' }}
             aria-label="Back to top"
           >
             <ArrowUp size={15} />

@@ -44,7 +44,7 @@ function ProjectCard({ project, index }) {
         >
           <span
             className="flex items-center gap-1.5 px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold text-white"
-            style={{ background: 'linear-gradient(135deg, #7c3aed, #06b6d4)' }}
+            style={{ background: 'linear-gradient(135deg, #9333ea, #f472b6)' }}
           >
             <ExternalLink size={14} /> Visit Live Site
           </span>
@@ -53,7 +53,7 @@ function ProjectCard({ project, index }) {
         {project.featured && (
           <div
             className="absolute top-3 left-3 flex items-center gap-1 px-2 py-1 rounded-full text-xs font-semibold pointer-events-none"
-            style={{ background: 'linear-gradient(135deg, rgba(124,58,237,0.9), rgba(6,182,212,0.9))' }}
+            style={{ background: 'linear-gradient(135deg, rgba(147,51,234,0.9), rgba(244,114,182,0.9))' }}
           >
             <Star size={10} fill="white" className="text-white" /> Live Product
           </div>
@@ -67,7 +67,7 @@ function ProjectCard({ project, index }) {
         <ul className="space-y-2 mb-4 sm:mb-5">
           {project.features.slice(0, 3).map((f) => (
             <li key={f} className="flex items-start gap-2 text-xs text-slate-500 text-left">
-              <span className="w-1.5 h-1.5 rounded-full shrink-0 mt-1" style={{ background: '#7c3aed' }} />
+              <span className="w-1.5 h-1.5 rounded-full shrink-0 mt-1" style={{ background: '#9333ea' }} />
               <span>{f}</span>
             </li>
           ))}
@@ -78,7 +78,7 @@ function ProjectCard({ project, index }) {
             <span
               key={t}
               className="glass px-2 py-0.5 rounded-full text-xs text-slate-400"
-              style={{ border: '1px solid rgba(124,58,237,0.2)' }}
+              style={{ border: '1px solid rgba(147,51,234,0.2)' }}
             >
               {t}
             </span>
@@ -140,7 +140,7 @@ export default function Projects() {
                     ? 'text-white shadow-lg shadow-purple-500/25'
                     : 'glass text-slate-400 hover:text-white'
                 }`}
-                style={filter === tech ? { background: 'linear-gradient(135deg, #7c3aed, #06b6d4)' } : {}}
+                style={filter === tech ? { background: 'linear-gradient(135deg, #9333ea, #f472b6)' } : {}}
               >
                 {tech}
               </motion.button>

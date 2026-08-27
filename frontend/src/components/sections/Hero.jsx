@@ -75,7 +75,7 @@ function MeshBackground({ reducedMotion }) {
       <div className="absolute inset-0 grid-bg opacity-30" />
       <div
         className={`absolute -top-40 -left-40 w-64 sm:w-96 h-64 sm:h-96 rounded-full blur-3xl opacity-20 ${reducedMotion ? '' : 'animate-float-slow'}`}
-        style={{ background: 'radial-gradient(circle, #7c3aed, transparent)' }}
+        style={{ background: 'radial-gradient(circle, #9333ea, transparent)' }}
       />
       <div
         className={`absolute top-1/3 -right-20 sm:-right-32 w-60 sm:w-80 h-60 sm:h-80 rounded-full blur-3xl opacity-15 max-md:opacity-10 ${reducedMotion ? '' : 'animate-float'}`}

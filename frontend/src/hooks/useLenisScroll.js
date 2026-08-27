@@ -1,33 +1,25 @@
 import { useEffect } from 'react'
-import { useReducedMotion, useCoarsePointer } from './useMedia'
+import { useReducedMotion } from './useMedia'
+import { initSmoothScroll, destroySmoothScroll } from '../lib/smoothScroll'
 
-export function useLenisScroll(enabled = true) {
+export function useLenisScroll(enabled = true, options = {}) {
   const reducedMotion = useReducedMotion()
-  const coarsePointer = useCoarsePointer()
+  const { startPaused = false } = options
 
   useEffect(() => {
-    if (!enabled || reducedMotion || coarsePointer) return
+    if (!enabled || reducedMotion) return
 
-    let lenis
-    let rafId
+    let active = true
 
-    import('lenis').then(({ default: Lenis }) => {
-      lenis = new Lenis({
-        duration: 1,
-        smoothWheel: true,
-        smoothTouch: false,
-      })
-
-      const raf = (time) => {
-        lenis.raf(time)
-        rafId = requestAnimationFrame(raf)
-      }
-      rafId = requestAnimationFrame(raf)
+    initSmoothScroll({ startPaused }).then(() => {
+      if (!active) destroySmoothScroll()
     })
 
     return () => {
-      cancelAnimationFrame(rafId)
-      lenis?.destroy()
+      active = false
+      destroySmoothScroll()
     }
-  }, [enabled, reducedMotion, coarsePointer])
+  }, [enabled, reducedMotion, startPaused])
 }
+
+export { smoothScrollTo } from '../lib/smoothScroll'

@@ -96,7 +96,7 @@ export default function Contact() {
         <>
           <div
             className="absolute top-0 left-0 w-72 h-72 rounded-full blur-3xl opacity-10 pointer-events-none"
-            style={{ background: 'radial-gradient(circle, #7c3aed, transparent)' }}
+            style={{ background: 'radial-gradient(circle, #9333ea, transparent)' }}
           />
           <div
             className="absolute bottom-0 right-0 w-64 h-64 rounded-full blur-3xl opacity-10 pointer-events-none"

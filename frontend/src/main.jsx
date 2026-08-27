@@ -1,13 +1,10 @@
-import React from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
-import './index.css'
-import { ThemeProvider } from './context/ThemeContext'
+import 'lenis/dist/lenis.css'
+import './lib/gsap'
+import './styles/moncy/index.css'
+import { prefetchCharacter } from './components/Character/utils/decrypt'
 
-createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <ThemeProvider>
-      <App />
-    </ThemeProvider>
-  </React.StrictMode>,
-)
+prefetchCharacter()
+
+createRoot(document.getElementById('root')).render(<App />)

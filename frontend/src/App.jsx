@@ -1,74 +1,51 @@
-import { useState, lazy, Suspense } from 'react'
-import { Toaster } from 'react-hot-toast'
-import Navbar from './components/layout/Navbar'
-import Footer from './components/layout/Footer'
-import LoadingScreen from './components/animations/LoadingScreen'
-import LazySection from './components/ui/LazySection'
-import { useLenisScroll } from './hooks/useLenisScroll'
+import { Component, lazy, Suspense } from 'react'
+import { LoadingProvider } from './context/LoadingProvider'
 
-const Hero = lazy(() => import('./components/sections/Hero'))
-const About = lazy(() => import('./components/sections/About'))
-const Skills = lazy(() => import('./components/sections/Skills'))
-const Projects = lazy(() => import('./components/sections/Projects'))
-const Courses = lazy(() => import('./components/sections/Courses'))
-const Education = lazy(() => import('./components/sections/Education'))
-const Services = lazy(() => import('./components/sections/Services'))
-const CodingProfiles = lazy(() => import('./components/sections/CodingProfiles'))
-const Contact = lazy(() => import('./components/sections/Contact'))
+const CharacterModel = lazy(() => import('./components/Character'))
+const MainContainer = lazy(() => import('./components/moncy/MainContainer'))
 
-const CursorGlow = lazy(() => import('./components/animations/CursorGlow'))
+class ErrorBoundary extends Component {
+  state = { error: null }
 
-const SESSION_KEY = 'portfolio-session-ready'
-
-export default function App() {
-  const [isLoading, setIsLoading] = useState(
-    () => typeof window !== 'undefined' && !sessionStorage.getItem(SESSION_KEY)
-  )
-
-  useLenisScroll(!isLoading)
-
-  const handleLoadComplete = () => {
-    sessionStorage.setItem(SESSION_KEY, '1')
-    setIsLoading(false)
+  static getDerivedStateFromError(error) {
+    return { error }
   }
 
+  render() {
+    if (this.state.error) {
+      return (
+        <div style={{
+          minHeight: '100vh',
+          padding: '2rem',
+          background: '#0b080c',
+          color: '#eae5ec',
+          fontFamily: 'Geist, sans-serif',
+        }}>
+          <h1 style={{ color: '#c2a4ff' }}>App error</h1>
+          <pre style={{ whiteSpace: 'pre-wrap' }}>{String(this.state.error?.message || this.state.error)}</pre>
+        </div>
+      )
+    }
+    return this.props.children
+  }
+}
+
+export default function App() {
   return (
-    <div className="app-shell relative min-h-screen w-full overflow-x-hidden">
-      <Toaster
-        position="bottom-right"
-        toastOptions={{
-          style: {
-            background: 'var(--color-bg-secondary)',
-            color: 'var(--color-text-primary)',
-            border: '1px solid rgba(124,58,237,0.3)',
-          },
-        }}
-      />
-
-      {isLoading && <LoadingScreen onComplete={handleLoadComplete} />}
-
-      {!isLoading && (
-        <>
-          <Suspense fallback={null}>
-            <CursorGlow />
-          </Suspense>
-          <Navbar />
-          <main className="w-full">
+    <ErrorBoundary>
+      <LoadingProvider>
+        <Suspense fallback={
+          <div style={{ minHeight: '100vh', background: '#0b080c', color: '#eae5ec', display: 'grid', placeItems: 'center' }}>
+            Loading…
+          </div>
+        }>
+          <MainContainer>
             <Suspense fallback={null}>
-              <Hero />
+              <CharacterModel />
             </Suspense>
-            <LazySection><About /></LazySection>
-            <LazySection><Skills /></LazySection>
-            <LazySection><Projects /></LazySection>
-            <LazySection><Courses /></LazySection>
-            <LazySection><Education /></LazySection>
-            <LazySection><Services /></LazySection>
-            <LazySection><CodingProfiles /></LazySection>
-            <LazySection><Contact /></LazySection>
-          </main>
-          <Footer />
-        </>
-      )}
-    </div>
+          </MainContainer>
+        </Suspense>
+      </LoadingProvider>
+    </ErrorBoundary>
   )
 }

@@ -35,14 +35,14 @@ export default function LoadingScreen({ onComplete }) {
           <div className="absolute inset-0 pointer-events-none">
             <div
               className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 sm:w-96 h-64 sm:h-96 rounded-full blur-3xl opacity-20"
-              style={{ background: 'radial-gradient(circle, #7c3aed, #06b6d4)' }}
+              style={{ background: 'radial-gradient(circle, #9333ea, #f472b6)' }}
             />
           </div>
 
           <div className="relative mb-8 sm:mb-10">
             <div
               className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl sm:rounded-3xl flex items-center justify-center mb-4 mx-auto"
-              style={{ background: 'linear-gradient(135deg, #7c3aed, #06b6d4)' }}
+              style={{ background: 'linear-gradient(135deg, #9333ea, #f472b6)' }}
             >
               <Code2 size={32} className="text-white" />
             </div>
@@ -60,7 +60,7 @@ export default function LoadingScreen({ onComplete }) {
               <div
                 className="h-full rounded-full transition-[width] duration-100"
                 style={{
-                  background: 'linear-gradient(90deg, #7c3aed, #06b6d4, #ec4899)',
+                  background: 'linear-gradient(90deg, #9333ea, #f472b6, #fb923c)',
                   width: `${progress}%`,
                 }}
               />

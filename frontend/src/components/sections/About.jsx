@@ -42,7 +42,7 @@ export default function About() {
         <>
           <div
             className="absolute top-1/2 left-0 w-80 h-80 rounded-full blur-[120px] opacity-10 pointer-events-none"
-            style={{ background: 'radial-gradient(circle, #7c3aed, transparent)' }}
+            style={{ background: 'radial-gradient(circle, #9333ea, transparent)' }}
           />
           <div
             className="absolute bottom-0 right-0 w-80 h-80 rounded-full blur-[120px] opacity-10 pointer-events-none"
@@ -66,7 +66,7 @@ export default function About() {
           <ScrollReveal animation="fade-right" stretch className="lg:col-span-5">
               <GlassCard padding="large" className="relative overflow-hidden group h-full">
                 <div className="absolute -top-20 -left-20 w-64 h-64 rounded-full blur-3xl opacity-10 group-hover:opacity-20 transition-opacity duration-700"
-                  style={{ background: '#7c3aed' }} />
+                  style={{ background: '#9333ea' }} />
                 
                 <div className="space-y-8 relative z-10">
                   <div className="flex items-center gap-5">

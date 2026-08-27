@@ -80,7 +80,7 @@ export default function Skills() {
                     ? 'text-white shadow-lg shadow-purple-500/25'
                     : 'glass text-slate-400 hover:text-white'
                 }`}
-                style={activeTab === cat ? { background: 'linear-gradient(135deg, #7c3aed, #06b6d4)' } : {}}
+                style={activeTab === cat ? { background: 'linear-gradient(135deg, #9333ea, #f472b6)' } : {}}
               >
                 {cat}
               </motion.button>
