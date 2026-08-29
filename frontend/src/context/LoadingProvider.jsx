@@ -13,7 +13,7 @@ export function LoadingProvider({ children }) {
   const safetyRef = useRef(null)
 
   useEffect(() => {
-    safetyRef.current = setTimeout(() => setLoading(100), 1200)
+    safetyRef.current = setTimeout(() => setLoading(100), 700)
     return () => clearTimeout(safetyRef.current)
   }, [])
 

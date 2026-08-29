@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useLoading } from '../../context/LoadingProvider'
 import { initialFX } from '../utils/initialFX'
 import setSplitText from '../utils/splitText'
@@ -6,18 +6,10 @@ import '../../styles/moncy/Loading.css'
 
 export default function Loading({ percent }) {
   const { setIsLoading } = useLoading()
-  const [loaded, setLoaded] = useState(false)
-  const [clicked, setClicked] = useState(false)
+  const done = percent >= 100
 
   useEffect(() => {
-    if (percent < 100) return
-    const t = setTimeout(() => setLoaded(true), 30)
-    return () => clearTimeout(t)
-  }, [percent])
-
-  useEffect(() => {
-    if (!loaded) return
-    setClicked(true)
+    if (!done) return
     const t = setTimeout(() => {
       try {
         initialFX()
@@ -26,22 +18,15 @@ export default function Loading({ percent }) {
         console.error(err)
       }
       setIsLoading(false)
-    }, 160)
+    }, 40)
     return () => clearTimeout(t)
-  }, [loaded, setIsLoading])
-
-  function handleMouseMove(e) {
-    const target = e.currentTarget
-    const rect = target.getBoundingClientRect()
-    target.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`)
-    target.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`)
-  }
+  }, [done, setIsLoading])
 
   return (
     <>
       <div className="loading-header">
         <a href="/#" className="loader-title" data-cursor="disable">Suhail.</a>
-        <div className={`loaderGame ${clicked ? 'loader-out' : ''}`}>
+        <div className={`loaderGame ${done ? 'loader-out' : ''}`}>
           <div className="loaderGame-container">
             <div className="loaderGame-in">
               {[...Array(27)].map((_, i) => <div className="loaderGame-line" key={i} />)}
@@ -50,22 +35,17 @@ export default function Loading({ percent }) {
           </div>
         </div>
       </div>
-      <div className="loading-screen">
+      <div className={`loading-screen ${done ? 'loading-screen-out' : ''}`}>
         <div className="loading-marquee">
           <div className="loading-marquee-track">
-            <span> A Creative Developer</span>
-            <span> A Creative Designer</span>
-            <span> A Creative Developer</span>
-            <span> A Creative Designer</span>
+            <span>Full-Stack Developer</span>
+            <span>MERN Engineer</span>
+            <span>Full-Stack Developer</span>
+            <span>MERN Engineer</span>
           </div>
         </div>
-        <div
-          className={`loading-wrap ${clicked ? 'loading-clicked' : ''}`}
-          onMouseMove={handleMouseMove}
-          role="presentation"
-        >
-          <div className="loading-hover" />
-          <div className={`loading-button ${loaded ? 'loading-complete' : ''}`}>
+        <div className={`loading-wrap ${done ? 'loading-clicked' : ''}`}>
+          <div className="loading-button">
             <div className="loading-container">
               <div className="loading-content">
                 <div className="loading-content-in">
@@ -73,9 +53,6 @@ export default function Loading({ percent }) {
                 </div>
               </div>
               <div className="loading-box" />
-            </div>
-            <div className="loading-content2">
-              <span>Welcome</span>
             </div>
           </div>
         </div>

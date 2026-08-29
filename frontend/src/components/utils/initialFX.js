@@ -25,12 +25,12 @@ function LoopText(Text1, Text2) {
 
 export function initialFX() {
   document.body.style.overflowY = 'auto'
-  document.body.style.backgroundColor = '#0b080c'
+  document.body.style.backgroundColor = '#030712'
   resumeSmoothScroll()
 
   document.getElementsByTagName('main')[0]?.classList.add('main-active')
 
-  gsap.to('body', { backgroundColor: '#0b080c', duration: 0.35 })
+  gsap.to('body', { backgroundColor: '#030712', duration: 0.2 })
 
   try {
     const landingText = new SplitText(['.landing-info h3', '.landing-intro h2', '.landing-intro h1'], {

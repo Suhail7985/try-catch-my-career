@@ -48,7 +48,7 @@ export function setCharTimeline(character, camera) {
     if (object.name === 'screenlight') {
       object.material.transparent = true
       object.material.opacity = 0
-      object.material.emissive.set('#C8BFFF')
+      object.material.emissive.set('#22d3ee')
       object.material.emissiveIntensity = 2
       screenLight = object
     }

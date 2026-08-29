@@ -33,7 +33,7 @@
   flex-direction: column;
   width: 600px;
   box-sizing: border-box;
-  border-right: 1px solid #363636;
+  border-right: 1px solid var(--borderColor);
   flex-shrink: 0;
   gap: 50px;
   justify-content: start;
@@ -46,7 +46,7 @@
   content: "";
   width: calc(50000vw);
   height: 1px;
-  background-color: #363636;
+  background-color: rgb(34 211 238 / 0.12);
   position: absolute;
   left: 50%;
   top: 0;
@@ -78,7 +78,7 @@
 }
 .work-info p {
   font-weight: 200;
-  color: #adacac;
+  color: var(--textMuted);
   margin: 0;
   margin-top: 3px;
 }

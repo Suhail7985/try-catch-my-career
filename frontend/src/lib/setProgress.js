@@ -1,13 +1,13 @@
-/** Ultra-fast loading progress */
+/** Instant-feel loading progress */
 export function setProgress(setLoading) {
-  let percent = 28
+  let percent = 42
   setLoading(percent)
 
   let interval = setInterval(() => {
-    percent += 14 + Math.round(Math.random() * 16)
-    setLoading(Math.min(percent, 92))
-    if (percent >= 92) clearInterval(interval)
-  }, 22)
+    percent += 18 + Math.round(Math.random() * 12)
+    setLoading(Math.min(percent, 96))
+    if (percent >= 96) clearInterval(interval)
+  }, 12)
 
   function clear() {
     clearInterval(interval)
@@ -17,17 +17,8 @@ export function setProgress(setLoading) {
   function loaded() {
     return new Promise((resolve) => {
       clearInterval(interval)
-      percent = Math.max(percent, 94)
-      setLoading(percent)
-      interval = setInterval(() => {
-        if (percent < 100) {
-          percent += 6
-          setLoading(Math.min(percent, 100))
-        } else {
-          resolve(percent)
-          clearInterval(interval)
-        }
-      }, 3)
+      setLoading(100)
+      resolve(100)
     })
   }
 
